@@ -1,4 +1,40 @@
-/* Retain existing font faces */
+/* =========== Global Styles =========== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: "Barlow", serif;
+    color: #fff;
+    font-size: 16px;
+    scroll-behavior: smooth;
+    line-height: 1.6;
+}
+
+body {
+    background: rgb(0, 0, 0);
+    overflow-x: hidden;
+}
+
+/* =========== Typography =========== */
+
+h1, h2, h3, h4, p {
+    margin: 0;
+}
+
+h2 {
+    font-family: var(--ff-title);
+    line-height: 0.8;
+    font-size: 60px;
+}
+
+/* =========== Font Faces =========== */
+
 @font-face {
     font-family: "Barlow";
     src: url("./Fonts/Barlow/barlow-v12-latin-regular.woff2") format("woff2"),
@@ -16,45 +52,35 @@
     font-style: italic;
     font-weight: 400;
     src: url("./Fonts/Crimson Text/woff2") format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-        U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2215,
-        U+FEFF, U+FFFD;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2122, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Enhanced CSS Custom Properties */
+/* =========== Variables =========== */
+
 :root {
     --clr-text: #fff;
     --clr-primary: #25274d;
     --clr-accent-1: #239cca;
     --clr-accent-2: #29648a;
     --clr-accent-3: rgb(235, 234, 217);
-    
-    /* Added new variables for consistent spacing */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
     --spacing-xl: 4rem;
-    
-    /* Added new variables for animations */
     --transition-speed: 0.3s;
     --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* Added new variables for layout */
     --container-max-width: 1500px;
     --border-radius: 8px;
-    
     --ff-title: "Manrope", sans-serif;
     --ff-serif: "Crimson Text", serif;
 }
 
-/* Improved scrollbar styling */
+/* =========== Scrollbar =========== */
+
 ::-webkit-scrollbar {
     width: 0.8em;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
+    background: transparent;
     border-radius: var(--border-radius);
     margin-block: var(--spacing-md);
 }
@@ -66,27 +92,12 @@
     transition: background var(--transition-speed);
 }
 
-::- webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: var(--clr-accent-1);
 }
 
-/* Enhanced Base Styles */
-html {
-    box-sizing: border-box;
-    font-family: "Barlow", serif;
-    color: var(--clr-text);
-    font-size: 16px;
-    scroll-behavior: smooth;
-}
+/* =========== Navigation =========== */
 
-body {
-    background: rgb(0, 0, 0);
-    margin: 0;
-    overflow-x: hidden;
-    line-height: 1.6;
-}
-
-/* Improved Navigation */
 .navbar {
     position: fixed;
     top: 0;
@@ -103,8 +114,9 @@ body {
 }
 
 .nav-brand {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 700;
+    font-weight: bold;
+    align-self: center;
+    font-size: 32px;
 }
 
 .nav-link {
@@ -129,17 +141,17 @@ body {
     width: 100%;
 }
 
-/* Enhanced Blog Cards */
-.blog-box, .blog-box2 {
+/* =========== Blog Cards =========== */
+
+.blog-box,.blog-box2 {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--clr-accent-3);
     border-radius: var(--border-radius);
     overflow: hidden;
-    transition: transform var(--transition-speed), 
-                box-shadow var(--transition-speed);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
-.blog-box:hover, .blog-box2:hover {
+.blog-box:hover,.blog-box2:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
@@ -151,12 +163,12 @@ body {
     transition: transform var(--transition-speed);
 }
 
-.blog-box:hover .blog-img img,
-.blog-box2:hover .blog-img img {
+.blog-box:hover.blog-img img,.blog-box2:hover.blog-img img {
     transform: scale(1.05);
 }
 
-/* Improved Modal */
+/* =========== Modal =========== */
+
 .modal {
     position: fixed;
     top: 50%;
@@ -168,8 +180,7 @@ body {
     width: min(90%, 650px);
     z-index: 1000;
     opacity: 0;
-    transition: transform var(--transition-speed),
-                opacity var(--transition-speed);
+    transition: transform var(--transition-speed), opacity var(--transition-speed);
 }
 
 .modal.active {
@@ -177,56 +188,21 @@ body {
     opacity: 1;
 }
 
-/* Enhanced Responsive Design */
-@media (max-width: 768px) {
-    .toggle-button {
-        display: block;
-        font-size: 1.5rem;
-        background: transparent;
-        border: none;
-        color: var(--clr-text);
-        cursor: pointer;
-        padding: var(--spacing-sm);
-        z-index: 1001;
-    }
+/* =========== Footer =========== */
 
-    .collapse {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.95);
-        padding: var(--spacing-md);
-        transform: translateY(-100%);
-        transition: transform var(--transition-speed);
-    }
-
-    .collapse.active {
-        transform: translateY(0);
-    }
-
-    .navbar-nav {
-        flex-direction: column;
-        gap: var(--spacing-md);
-    }
-
-    .blog-container {
-        grid-template-columns: 1fr;
-        padding: var(--spacing-md);
-    }
-}
-
-/* Enhanced Footer */
 #footer {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
     padding: var(--spacing-xl) var(--spacing-md);
     margin-top: var(--spacing-xl);
+    border-top: 1px solid var(--clr-accent-3);
 }
 
-/* Improved Utility Classes */
+/* =========== Utility Classes =========== */
+
 .container {
-    width: min(var(--container-max-width), 100% - 2rem);
-    margin-inline: auto;
+    max-width: var(--container-max-width);
+    margin: auto;
+    padding: 0 15px;
 }
 
 .text-gradient {
@@ -236,7 +212,95 @@ body {
     color: transparent;
 }
 
-/* Animation Classes */
+.d-flex {
+    display: flex;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.mt-1 { margin-top: 5px; }
+.mt-2 { margin-top: 10px; }
+.mt-3 { margin-top: 50px; }
+.mb-1 { margin-bottom: 10px; }
+.mb-3 { margin-bottom: 30px; }
+.px-1 { padding-left: 5px; padding-right: 5px; }
+.px-2 { padding-left: 20px; padding-right: 20px; }
+.py-05 { padding-top: 5px; padding-bottom: 5px; }
+.py-1 { padding-top: 10px; padding-bottom: 10px; }
+.py-2 { padding-top: 30px; padding-bottom: 30px; }
+.py-3 { padding-top: 30px; padding-bottom: 30px; }
+.pxr { padding-right: 3px; }
+
+/* =========== Media Queries =========== */
+
+@media (min-width: 768px) {
+    html {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1100px) {
+   .blog-box,.blog-box2 {
+        width: 70%;
+    }
+}
+
+@media (max-width: 792px) {
+   .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+   .insta-icon {
+        border-left: none;
+        padding-left: 0;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 602px) {
+   .toggle-button {
+        display: initial;
+    }
+   .collapse {
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.8s cubic-bezier(0.39, 0.01, 1, 1);
+    }
+   .collapse.nav-link {
+        display: block;
+        text-align: center;
+    }
+   .nav-brand {
+        position: absolute;
+        left: 0;
+        margin: 2px 10px;
+    }
+}
+
+@media (max-width: 550px) {
+  .blog-box,.blog-box2 {
+        margin: 20px 10px;
+        width: 100%;
+    }
+    ::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+@media (max-width: 1250px) {
+  .blog-box,.blog-box2 {
+        width: 300px;
+    }
+}
+
+/* =========== Animation Classes =========== */
+
 .fade-in {
     animation: fadeIn var(--transition-speed) forwards;
 }
@@ -244,4 +308,144 @@ body {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========== Homepage Styles =========== */
+
+.about-us {
+    text-align: center;
+    padding: 15vh 2vh 1em 1em;
+}
+
+.events-showcase {
+    text-align: center;
+    padding: 2vh 1em;
+}
+
+.section-title {
+    text-align: center;
+    padding: 20px;
+    line-height: 65px;
+}
+
+/* =========== Blog Section =========== */
+
+.blogs-showcase {
+    padding: 2vh 1em;
+}
+
+.blog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+    flex-wrap: wrap;
+}
+
+.blog-text {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-text {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-text span {
+    color: var(--clr-accent-3);
+    font-size: 0.9rem;
+}
+
+.blog-text.blog-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--clr-text);
+}
+
+.blog-text.blog-title:hover {
+    color: var(--clr-accent-1);
+    transition: all ease 0.3s;
+}
+
+.blog-text p {
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 20px 0px;
+}
+
+.blog-text a {
+    color: var(--clr-text);
+}
+
+.blog-text a:hover {
+    color: var(--clr-accent-1);
+    transition: all ease 0.3s;
+}
+
+/* =========== Footer =========== */
+
+#footer.feature-post.flex-item {
+    margin-bottom: 10px;
+}
+
+.footer-link:hover {
+    color: var(--clr-accent-1);
+}
+
+.text-title:hover {
+    color: var(--clr-accent-1);
+}
+
+/* =========== Miscellaneous =========== */
+
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+.text-light {
+    color: var(--clr-text);
+}
+
+.text-secondary {
+    color: var(--clr-accent-1);
+}
+
+.bg-transparent {
+    background-color: transparent;
+}
+
+.object-fit {
+    max-height: 120px;
+    height: 80px;
+    width: 120px;
+    object-fit: fill;
+}
+
+.row {
+    display: flex;
+    padding: 0 20px;
+}
+
+.col-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-right: 35px;
+}
+
+@media (max-width: 1024px) {
+   .row {
+        flex-wrap: wrap;
+    }
+   .col-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
 }
